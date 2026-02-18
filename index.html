@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rise With Uzma | Premium Offline Tuition Academy</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --navy:#0B1B3A;
+      --navy-2:#102752;
+      --gold:#D6B25E;
+      --gold-2:#B88A2F;
+      --white:#ffffff;
+      --muted:#6b7280;
+      --bg1:#f7f8fb;
+      --bg2:#eef1f8;
+
+      --shadow: 0 14px 40px rgba(12, 26, 56, 0.12);
+      --shadow-soft: 0 10px 28px rgba(12, 26, 56, 0.10);
+      --radius: 18px;
+      --radius-lg: 28px;
+
+      --container: 1180px;
+      --ring: 0 0 0 6px rgba(214,178,94,0.18);
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--navy);
+      background:
+        radial-gradient(1200px 700px at 15% 10%, rgba(214,178,94,0.12), transparent 55%),
+        radial-gradient(1000px 650px at 90% 25%, rgba(16,39,82,0.10), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+
+    /* Layout */
+    .container{
+      width:min(var(--container), calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    /* Top Nav */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.75);
+      border-bottom: 1px solid rgba(11,27,58,0.06);
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:16px;
+    }
+    .brand{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+    .brand .name{
+      font-family: Montserrat, sans-serif;
+      font-weight:800;
+      letter-spacing:0.3px;
+      font-size:18px;
+    }
+    .brand .tag{
+      color: rgba(11,27,58,0.65);
+      font-size:12px;
+      margin-top:3px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+    .nav-links a{
+      font-size:13px;
+      color: rgba(11,27,58,0.78);
+      padding:10px 10px;
+      border-radius:12px;
+      transition: all .25s ease;
+    }
+    .nav-links a:hover{
+      background: rgba(11,27,58,0.05);
+      color: var(--navy);
+    }
+    .nav-cta{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border:none;
+      cursor:pointer;
+      padding:12px 16px;
+      border-radius:14px;
+      font-weight:600;
+      font-size:13px;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      white-space:nowrap;
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .btn-gold{
+      color: #0b1b3a;
+      background: linear-gradient(135deg, var(--gold), #f1d48b);
+      box-shadow: 0 12px 26px rgba(214,178,94,0.25);
+    }
+    .btn-gold:hover{ box-shadow: 0 16px 34px rgba(214,178,94,0.32); }
+
+    .btn-outline{
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(11,27,58,0.15);
+      color: var(--navy);
+    }
+    .btn-outline:hover{
+      box-shadow: var(--shadow-soft);
+      border-color: rgba(11,27,58,0.22);
+      transform: translateY(-1px);
+    }
+
+    .menu-btn{
+      display:none;
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      border: 1px solid rgba(11,27,58,0.14);
+      background: rgba(255,255,255,0.85);
+      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+      transition:.25s ease;
+    }
+    .menu-btn:hover{ box-shadow: var(--shadow-soft); }
+    .menu-icon{
+      width:18px;
+      height:12px;
+      position:relative;
+    }
+    .menu-icon span{
+      position:absolute; left:0; right:0;
+      height:2px; border-radius:2px;
+      background: var(--navy);
+      transition: .25s ease;
+    }
+    .menu-icon span:nth-child(1){ top:0; }
+    .menu-icon span:nth-child(2){ top:5px; opacity:1; }
+    .menu-icon span:nth-child(3){ top:10px; }
+
+    /* Mobile nav drawer */
+    .drawer{
+      display:none;
+      position:fixed;
+      inset:0;
+      background: rgba(11,27,58,0.55);
+      z-index:60;
+    }
+    .drawer-panel{
+      position:absolute;
+      top:0; right:0;
+      width:min(360px, 92%);
+      height:100%;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      padding:18px;
+      border-left: 1px solid rgba(11,27,58,0.08);
+      transform: translateX(100%);
+      transition: transform .25s ease;
+    }
+    .drawer.open .drawer-panel{ transform: translateX(0); }
+    .drawer .drawer-head{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:6px 0 12px;
+    }
+    .drawer .drawer-links{
+      display:flex; flex-direction:column;
+      gap:8px;
+      padding:8px 0 14px;
+    }
+    .drawer .drawer-links a{
+      padding:12px 12px;
+      border-radius:14px;
+      background: rgba(11,27,58,0.04);
+      color: rgba(11,27,58,0.88);
+      font-weight:500;
+    }
+    .drawer .drawer-links a:hover{ background: rgba(11,27,58,0.07); }
+
+    /* Hero */
+    .hero{
+      position:relative;
+      padding:60px 0 40px;
+    }
+    .hero-card{
+      border-radius: var(--radius-lg);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      position:relative;
+      background: #0b1b3a;
+      min-height: 520px;
+    }
+    .hero-bg{
+      position:absolute; inset:0;
+      background-size: cover;
+      background-position:center;
+      transform: scale(1.04);
+      filter: saturate(1.05) contrast(1.02);
+      /* ONLINE IMAGE (Unsplash). For OFFLINE: replace with url('images/hero.jpg') */
+      background-image:
+        linear-gradient(120deg, rgba(11,27,58,0.82), rgba(11,27,58,0.55)),
+        url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80");
+    }
+    .hero-content{
+      position:relative;
+      padding:64px 56px;
+      display:grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap:32px;
+      align-items:center;
+    }
+    .hero-badge{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding:10px 14px;
+      border-radius:999px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(214,178,94,0.28);
+      color: rgba(255,255,255,0.92);
+      font-size:13px;
+      width:fit-content;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+    }
+    .dot{
+      width:10px; height:10px; border-radius:99px;
+      background: linear-gradient(135deg, var(--gold), #f3dc9f);
+      box-shadow: 0 0 0 5px rgba(214,178,94,0.18);
+    }
+    .hero h1{
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: clamp(34px, 5vw, 56px);
+      letter-spacing: 0.2px;
+      margin: 16px 0 10px;
+      color: var(--white);
+      line-height:1.05;
+    }
+    .hero h2{
+      margin:0;
+      font-weight: 600;
+      font-size: clamp(16px, 2.2vw, 20px);
+      color: rgba(255,255,255,0.92);
+      letter-spacing: 0.2px;
+    }
+    .hero p{
+      margin: 16px 0 26px;
+      max-width: 56ch;
+      color: rgba(255,255,255,0.82);
+      line-height:1.7;
+      font-size: 15px;
+    }
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .hero-stats{
+      display:grid;
+      gap:12px;
+    }
+    .stat{
+      border-radius: 18px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.14);
+      padding: 16px;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.16);
+    }
+    .stat .k{
+      color: rgba(255,255,255,0.75);
+      font-size: 12px;
+    }
+    .stat .v{
+      margin-top: 6px;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.2px;
+    }
+    .gold-line{
+      width:100%;
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(214,178,94,0.72), transparent);
+      margin-top:18px;
+      opacity:0.9;
+    }
+
+    /* Section base */
+    section{
+      padding: 64px 0;
+      position:relative;
+    }
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom: 24px;
+    }
+    .section-title{
+      font-family: Montserrat, sans-serif;
+      font-size: 30px;
+      margin:0;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+    .section-sub{
+      margin:0;
+      color: rgba(11,27,58,0.68);
+      max-width: 62ch;
+      line-height:1.7;
+      font-size: 14px;
+    }
+
+    .surface{
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(11,27,58,0.08);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+    }
+
+    /* About */
+    .about-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items:center;
+      padding: 26px;
+    }
+    .about-text h3{
+      margin:0 0 10px;
+      font-family: Montserrat, sans-serif;
+      font-weight:800;
+      font-size: 22px;
+    }
+    .pill-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 16px;
+    }
+    .pill{
+      padding:10px 12px;
+      border-radius: 999px;
+      background: rgba(11,27,58,0.04);
+      border: 1px solid rgba(11,27,58,0.08);
+      font-size: 13px;
+      color: rgba(11,27,58,0.78);
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .pill svg{ opacity:0.9; }
+
+    .about-img{
+      border-radius: 22px;
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      position:relative;
+      min-height: 320px;
+      background:
+        linear-gradient(120deg, rgba(11,27,58,0.18), rgba(214,178,94,0.08)),
+        /* ONLINE IMAGE. For OFFLINE: url('images/about.jpg') */
+        url("https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* Why Choose Us cards */
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .card{
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(11,27,58,0.08);
+      box-shadow: var(--shadow-soft);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      position:relative;
+      overflow:hidden;
+      min-height: 140px;
+    }
+    .card:hover{
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: rgba(214,178,94,0.26);
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(500px 220px at 20% 10%, rgba(214,178,94,0.18), transparent 55%);
+      pointer-events:none;
+      opacity:0.9;
+    }
+    .card-top{
+      position:relative;
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .icon{
+      width:44px; height:44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(214,178,94,0.25), rgba(11,27,58,0.06));
+      border: 1px solid rgba(214,178,94,0.32);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 10px 24px rgba(214,178,94,0.18);
+      flex: 0 0 auto;
+    }
+    .card h4{
+      margin:0;
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      position:relative;
+    }
+    .card p{
+      margin: 10px 0 0;
+      color: rgba(11,27,58,0.70);
+      line-height: 1.7;
+      font-size: 13px;
+      position:relative;
+    }
+
+    /* Timings table */
+    .timings-wrap{
+      padding: 22px;
+    }
+    .table{
+      width:100%;
+      border-collapse: collapse;
+      overflow:hidden;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(11,27,58,0.08);
+      box-shadow: var(--shadow-soft);
+    }
+    .table th, .table td{
+      padding: 14px 14px;
+      text-align:left;
+      border-bottom: 1px solid rgba(11,27,58,0.06);
+      font-size: 14px;
+    }
+    .table th{
+      background: linear-gradient(135deg, rgba(11,27,58,0.95), rgba(16,39,82,0.92));
+      color: rgba(255,255,255,0.92);
+      font-family: Montserrat, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+    .table tr:last-child td{ border-bottom:none; }
+    .loc{
+      display:flex; align-items:center; gap:10px;
+      font-weight: 600;
+      color: rgba(11,27,58,0.90);
+    }
+    .note{
+      margin-top: 14px;
+      padding: 14px 14px;
+      border-radius: 16px;
+      background: rgba(214,178,94,0.10);
+      border: 1px solid rgba(214,178,94,0.28);
+      color: rgba(11,27,58,0.84);
+      font-size: 13px;
+      line-height:1.6;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+
+    /* Gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .g-item{
+      border-radius: 18px;
+      overflow:hidden;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(11,27,58,0.08);
+      background: #fff;
+      cursor:pointer;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      position:relative;
+      min-height: 210px;
+    }
+    .g-item:hover{
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: var(--shadow);
+      border-color: rgba(214,178,94,0.26);
+    }
+    .g-img{
+      height:100%;
+      width:100%;
+      background-size: cover;
+      background-position:center;
+      transform: scale(1.04);
+      transition: transform .35s ease;
+    }
+    .g-item:hover .g-img{ transform: scale(1.10); }
+    .g-cap{
+      position:absolute;
+      left:14px;
+      right:14px;
+      bottom:14px;
+      padding:10px 12px;
+      border-radius: 14px;
+      background: rgba(11,27,58,0.72);
+      color: rgba(255,255,255,0.92);
+      font-size: 12px;
+      display:flex;
+      gap:8px;
+      align-items:center;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    /* Locations */
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .loc-card{
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(11,27,58,0.08);
+      box-shadow: var(--shadow-soft);
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .loc-card h4{
+      margin:0;
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+    }
+    .loc-card p{
+      margin: 6px 0 0;
+      color: rgba(11,27,58,0.70);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* Contact */
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    .contact-card{
+      padding: 20px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.86), rgba(255,255,255,0.70));
+      border: 1px solid rgba(11,27,58,0.08);
+      box-shadow: var(--shadow-soft);
+      position:relative;
+      overflow:hidden;
+    }
+    .contact-card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(520px 220px at 10% 0%, rgba(214,178,94,0.18), transparent 55%);
+      pointer-events:none;
+    }
+    .contact-card h4{
+      margin:0 0 10px;
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      position:relative;
+    }
+    .contact-row{
+      position:relative;
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding: 12px 0;
+      border-top: 1px solid rgba(11,27,58,0.06);
+    }
+    .contact-row:first-of-type{ border-top:none; padding-top:0; }
+    .contact-row b{
+      display:block;
+      margin-bottom: 2px;
+    }
+    .contact-row span{
+      color: rgba(11,27,58,0.72);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .contact-actions{
+      position:relative;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 14px;
+    }
+    .fees-note{
+      position:relative;
+      margin-top: 12px;
+      padding: 14px 14px;
+      border-radius: 16px;
+      background: rgba(11,27,58,0.06);
+      border: 1px solid rgba(11,27,58,0.08);
+      color: rgba(11,27,58,0.78);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer{
+      padding: 26px 0 34px;
+      color: rgba(11,27,58,0.65);
+      text-align:center;
+      font-size: 13px;
+    }
+    .footer-line{
+      height:1px;
+      width:100%;
+      margin: 0 auto 18px;
+      background: linear-gradient(90deg, transparent, rgba(11,27,58,0.14), transparent);
+    }
+
+    /* Section transitions (soft wave) */
+    .wave{
+      position:absolute;
+      left:0; right:0;
+      top:-1px;
+      height: 50px;
+      overflow:hidden;
+      pointer-events:none;
+    }
+    .wave svg{
+      width:100%;
+      height:100%;
+      display:block;
+    }
+
+    /* Reveal animations */
+    .reveal{
+      opacity:0;
+      transform: translateY(14px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.in{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    /* Floating WhatsApp button */
+    .whatsapp-float{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:80;
+      width:58px;
+      height:58px;
+      border-radius: 18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(135deg, #25D366, #1da851);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.22);
+      border: 1px solid rgba(255,255,255,0.22);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .whatsapp-float:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 22px 46px rgba(0,0,0,0.26);
+    }
+    .whatsapp-float:focus{ outline:none; box-shadow: var(--ring); }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-content{ grid-template-columns: 1fr; padding: 52px 22px; }
+      .hero-stats{ grid-template-columns: 1fr 1fr; }
+      .about-grid{ grid-template-columns: 1fr; }
+      .cards{ grid-template-columns: repeat(2,1fr); }
+      .gallery{ grid-template-columns: repeat(2, 1fr); }
+      .contact-grid{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px){
+      .nav-links{ display:none; }
+      .menu-btn{ display:flex; }
+      .hero-card{ min-height: 560px; }
+      .hero-stats{ grid-template-columns: 1fr; }
+      .cards{ grid-template-columns: 1fr; }
+      .two-col{ grid-template-columns: 1fr; }
+      .gallery{ grid-template-columns: 1fr; }
+      section{ padding: 56px 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="name">Rise With Uzma</div>
+        <div class="tag">Premium Offline Tuition Academy</div>
+      </div>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#why">Why Choose Us</a>
+        <a href="#timings">Timings</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#locations">Locations</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-outline" href="#contact">Get Details</a>
+        <a class="btn btn-gold" target="_blank" rel="noopener"
+           href="https://wa.me/918669771517?text=Hello%20Rise%20With%20Uzma%2C%20I%20want%20to%20enroll%20and%20know%20the%20fees%20structure.">
+          <!-- WhatsApp icon -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M20.5 11.9c0 4.6-3.8 8.4-8.4 8.4-1.5 0-2.9-.4-4.1-1l-4 1 1.1-3.9c-.8-1.2-1.3-2.7-1.3-4.3 0-4.6 3.8-8.4 8.4-8.4s8.3 3.7 8.3 8.2Z" stroke="rgba(11,27,58,0.9)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9.6 8.7c.2-.5.4-.5.6-.5h.6c.2 0 .4 0 .5.3l.8 1.9c.1.2.1.5 0 .7l-.3.4c-.1.2-.1.4.1.6.4.7 1 1.3 1.7 1.7.2.1.4.1.6-.1l.4-.3c.2-.1.5-.1.7 0l1.9.8c.3.1.3.3.3.5v.6c0 .2 0 .4-.5.6-.5.3-1.5.6-2.6.3-1.1-.3-2.5-1.2-3.6-2.3-1.1-1.1-2-2.5-2.3-3.6-.3-1.1 0-2.1.3-2.6Z" fill="rgba(11,27,58,0.9)"/>
+          </svg>
+          Enroll Now
+        </a>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+          <div class="menu-icon" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel" role="dialog" aria-label="Mobile Menu">
+      <div class="drawer-head">
+        <div class="brand">
+          <div class="name">Rise With Uzma</div>
+          <div class="tag">Premium Offline Coaching</div>
+        </div>
+        <button class="btn btn-outline" id="closeDrawer" aria-label="Close menu">Close</button>
+      </div>
+
+      <div class="drawer-links">
+        <a href="#about" class="drawer-link">About</a>
+        <a href="#why" class="drawer-link">Why Choose Us</a>
+        <a href="#timings" class="drawer-link">Timings</a>
+        <a href="#gallery" class="drawer-link">Gallery</a>
+        <a href="#locations" class="drawer-link">Locations</a>
+        <a href="#contact" class="drawer-link">Contact</a>
+      </div>
+
+      <a class="btn btn-gold" style="width:100%;"
+         target="_blank" rel="noopener"
+         href="https://wa.me/918669771517?text=Hello%20Rise%20With%20Uzma%2C%20I%20want%20to%20enroll%20and%20know%20the%20fees%20structure.">
+        Enroll Now on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero" id="top">
+      <div class="container">
+        <div class="hero-card">
+          <div class="hero-bg" aria-hidden="true"></div>
+
+          <div class="hero-content">
+            <div class="reveal">
+              <div class="hero-badge">
+                <span class="dot"></span>
+                Premium Offline Tuition Academy
+              </div>
+
+              <h1>Rise With Uzma</h1>
+              <h2>Quality Education with Personal Attention</h2>
+              <p>
+                Offline Coaching for Classes <b>3rd to 12th</b> with a premium learning environment,
+                strong basics, regular practice, and confident performance.
+              </p>
+
+              <div class="hero-actions">
+                <a class="btn btn-gold" target="_blank" rel="noopener"
+                   href="https://wa.me/918669771517?text=Hello%20Rise%20With%20Uzma%2C%20I%20want%20to%20enroll%20and%20know%20the%20fees%20structure.">
+                  Enroll Now on WhatsApp
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M5 12h12" stroke="#0B1B3A" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M13 6l6 6-6 6" stroke="#0B1B3A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+                <a class="btn btn-outline" href="#timings">View Timings</a>
+              </div>
+
+              <div class="gold-line"></div>
+            </div>
+
+            <div class="hero-stats">
+              <div class="stat reveal">
+                <div class="k">Classes</div>
+                <div class="v">3rd to 12th</div>
+              </div>
+              <div class="stat reveal">
+                <div class="k">Subjects</div>
+                <div class="v">Maths • Science • English</div>
+              </div>
+              <div class="stat reveal">
+                <div class="k">Mode</div>
+                <div class="v">Offline Coaching</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+          <path d="M0,40 C240,10 360,60 720,30 C1080,0 1200,55 1440,25 L1440,0 L0,0 Z"
+                fill="rgba(255,255,255,0.55)"></path>
+        </svg>
+      </div>
+
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h3 class="section-title reveal">About</h3>
+            <p class="section-sub reveal">
+              A warm, focused classroom where every student gets personal guidance — premium learning with clean, structured teaching.
+            </p>
+          </div>
+        </div>
+
+        <div class="surface about-grid">
+          <div class="about-text reveal">
+            <h3>Offline Coaching with Personal Mentorship</h3>
+            <p class="section-sub" style="margin-top:10px;">
+              We teach with clarity and care. Strong fundamentals, regular practice, doubt-solving, and consistent improvement —
+              all inside a friendly premium classroom environment.
+            </p>
+
+            <div class="pill-row">
+              <div class="pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 5h16v14H4z" stroke="rgba(11,27,58,0.75)" stroke-width="1.6" />
+                  <path d="M7 9h10M7 12h10M7 15h7" stroke="rgba(11,27,58,0.55)" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                Classes: 3rd to 12th
+              </div>
+              <div class="pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 19V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12" stroke="rgba(11,27,58,0.75)" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M8 9h8M8 12h8M8 15h6" stroke="rgba(11,27,58,0.55)" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                Subjects: Maths, Science, English
+              </div>
+              <div class="pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 3l8 4v6c0 5-3.5 8-8 8s-8-3-8-8V7l8-4Z" stroke="rgba(11,27,58,0.75)" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M9.5 12l1.8 1.8L15 10" stroke="rgba(11,27,58,0.55)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Mode: Offline Classes
+              </div>
+              <div class="pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 8c4-4 12-4 16 0" stroke="rgba(11,27,58,0.65)" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M6 12c3-3 9-3 12 0" stroke="rgba(11,27,58,0.55)" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M8.5 15c2-2 5-2 7 0" stroke="rgba(11,27,58,0.45)" stroke-width="1.8" stroke-linecap="round"/>
+                  <circle cx="12" cy="18" r="1.2" fill="rgba(214,178,94,0.9)"/>
+                </svg>
+                Other Subjects if required
+              </div>
+            </div>
+          </div>
+
+          <div class="about-img reveal" aria-label="Teacher teaching students in classroom"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section id="why">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h3 class="section-title reveal">Why Choose Us</h3>
+            <p class="section-sub reveal">Premium card-based learning support designed for consistent results and confidence.</p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <div class="card reveal">
+            <div class="card-top">
+              <div class="icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z" stroke="rgba(11,27,58,0.8)" stroke-width="1.6"/>
+                  <path d="M4 20c1.6-4.2 14.4-4.2 16 0" stroke="rgba(11,27,58,0.55)" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h4>Personal Attention</h4>
+            </div>
+            <p>Focused guidance for each student to build strong basics and better understanding.</p>
+          </div>
+
+          <div class="card reveal">
+            <div class="card-top">
+              <div class="icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 7h16v10H4z" stroke="rgba(11,27,58,0.8)" stroke-width="1.6"/>
+                  <path d="M8 17l-2 3" stroke="rgba(11,27,58,0.55)" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M10 11h4" stroke="rgba(214,178,94,0.95)" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h4>Doubt Solving</h4>
+            </div>
+            <p>Clear explanations and quick doubt resolution so students never feel stuck.</p>
+          </div>
+
+          <div class="card reveal">
+            <div class="card-top">
+              <div class="icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path d="M7 3h10v18H7z" stroke="rgba(11,27,58,0.8)" stroke-width="1.6"/>
+                  <path d="M9 7h6M9 11h6M9 15h4" stroke="rgba(11,27,58,0.55)" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h4>Weekly Tests</h4>
+            </div>
+            <p>Regular testing improves speed, accuracy, and exam confidence.</p>
+          </div>
+
+          <div class="card reveal">
+            <div class="card-top">
+              <div class="icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path d="M6 4h12v16H6z" stroke="rgba(11,27,58,0.8)" stroke-width="1.6"/>
+                  <path d="M9 8h6" stroke="rgba(11,27,58,0.55)" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M9 12h6" stroke="rgba(11,27,58,0.55)" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M9 16h4" stroke="rgba(214,178,94,0.95)" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h4>Notes Provided</h4>
+            </div>
+            <p>Well-structured notes for quick revision, homework support, and better practice.</p>
+          </div>
+
+          <div class="card reveal">
+            <div class="card-top">
+              <div class="icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3l7 4v6c0 5-3 8-7 8s-7-3-7-8V7l7-4Z" stroke="rgba(11,27,58,0.8)" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M9 12l2 2 4-5" stroke="rgba(214,178,94,0.95)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h4>Experienced Faculty</h4>
+            </div>
+            <p>Teaching with patience, clarity, and a premium standard of classroom discipline.</p>
+          </div>
+
+          <div class="card reveal">
+            <div class="card-top">
+              <div class="icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 18h16" stroke="rgba(11,27,58,0.55)" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M6 17V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v10" stroke="rgba(11,27,58,0.8)" stroke-width="1.6"/>
+                  <path d="M9 9h6" stroke="rgba(214,178,94,0.95)" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h4>Premium Learning Space</h4>
+            </div>
+            <p>Clean atmosphere, calm environment, and modern classroom feel for better focus.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMINGS -->
+    <section id="timings">
+      <div class="wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+          <path d="M0,25 C220,55 420,0 720,30 C1020,60 1210,10 1440,40 L1440,0 L0,0 Z"
+                fill="rgba(255,255,255,0.55)"></path>
+        </svg>
+      </div>
+
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h3 class="section-title reveal">Timings</h3>
+            <p class="section-sub reveal">Elegant schedule layout for both centers.</p>
+          </div>
+        </div>
+
+        <div class="surface timings-wrap reveal">
+          <table class="table" aria-label="Timings table">
+            <thead>
+              <tr>
+                <th>Location</th>
+                <th>Timings</th>
+                <th>Standards</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="loc">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 21s7-5 7-11a7 7 0 1 0-14 0c0 6 7 11 7 11Z" stroke="rgba(11,27,58,0.75)" stroke-width="1.6" stroke-linejoin="round"/>
+                      <circle cx="12" cy="10" r="2.3" fill="rgba(214,178,94,0.9)"/>
+                    </svg>
+                    Starcity (Roshan Mohallah)
+                  </div>
+                </td>
+                <td>5:00 PM – 7:00 PM</td>
+                <td>All Standards</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="loc">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 21s7-5 7-11a7 7 0 1 0-14 0c0 6 7 11 7 11Z" stroke="rgba(11,27,58,0.75)" stroke-width="1.6" stroke-linejoin="round"/>
+                      <circle cx="12" cy="10" r="2.3" fill="rgba(214,178,94,0.9)"/>
+                    </svg>
+                    Shringartali
+                  </div>
+                </td>
+                <td>3:00 PM – (3rd to 7th)</td>
+                <td>3rd to 7th</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="loc">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 21s7-5 7-11a7 7 0 1 0-14 0c0 6 7 11 7 11Z" stroke="rgba(11,27,58,0.75)" stroke-width="1.6" stroke-linejoin="round"/>
+                      <circle cx="12" cy="10" r="2.3" fill="rgba(214,178,94,0.9)"/>
+                    </svg>
+                    Shringartali
+                  </div>
+                </td>
+                <td>7:00 PM – 8th to 10th</td>
+                <td>8th to 10th</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="note">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z" stroke="rgba(11,27,58,0.75)" stroke-width="1.6"/>
+              <path d="M12 7v6l4 2" stroke="rgba(214,178,94,0.95)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <b>Note:</b> Timings may vary. Updates will be informed via WhatsApp group.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h3 class="section-title reveal">Gallery</h3>
+            <p class="section-sub reveal">Premium classroom moments and study atmosphere (hover to zoom).</p>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <div class="g-item reveal" role="img" aria-label="Students studying in classroom">
+            <div class="g-img"
+                 style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80');">
+            </div>
+            <div class="g-cap">
+              <span class="dot" style="width:8px;height:8px;box-shadow:none;"></span>
+              Students studying in classroom
+            </div>
+          </div>
+
+          <div class="g-item reveal" role="img" aria-label="Teacher explaining on board">
+            <div class="g-img"
+                 style="background-image:url('https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=80');">
+            </div>
+            <div class="g-cap">
+              <span class="dot" style="width:8px;height:8px;box-shadow:none;"></span>
+              Teacher explaining on board
+            </div>
+          </div>
+
+          <div class="g-item reveal" role="img" aria-label="Group study session">
+            <div class="g-img"
+                 style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80');">
+            </div>
+            <div class="g-cap">
+              <span class="dot" style="width:8px;height:8px;box-shadow:none;"></span>
+              Group study session
+            </div>
+          </div>
+
+          <div class="g-item reveal" role="img" aria-label="Books and stationery aesthetic image">
+            <div class="g-img"
+                 style="background-image:url('https://images.unsplash.com/photo-1456735190827-d1262f71b8a3?auto=format&fit=crop&w=1200&q=80');">
+            </div>
+            <div class="g-cap">
+              <span class="dot" style="width:8px;height:8px;box-shadow:none;"></span>
+              Books & stationery aesthetic
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATIONS -->
+    <section id="locations">
+      <div class="wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+          <path d="M0,40 C240,10 360,60 720,30 C1080,0 1200,55 1440,25 L1440,0 L0,0 Z"
+                fill="rgba(255,255,255,0.55)"></path>
+        </svg>
+      </div>
+
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h3 class="section-title reveal">Location</h3>
+            <p class="section-sub reveal">Two centers for convenience. Contact on WhatsApp for exact directions.</p>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="loc-card reveal">
+            <div class="icon" aria-hidden="true" style="box-shadow:none;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s7-5 7-11a7 7 0 1 0-14 0c0 6 7 11 7 11Z" stroke="rgba(11,27,58,0.8)" stroke-width="1.6" stroke-linejoin="round"/>
+                <circle cx="12" cy="10" r="2.4" fill="rgba(214,178,94,0.95)"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Starcity (Roshan Mohallah)</h4>
+              <p>Offline tuition classes with a premium learning atmosphere.</p>
+            </div>
+          </div>
+
+          <div class="loc-card reveal">
+            <div class="icon" aria-hidden="true" style="box-shadow:none;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s7-5 7-11a7 7 0 1 0-14 0c0 6 7 11 7 11Z" stroke="rgba(11,27,58,0.8)" stroke-width="1.6" stroke-linejoin="round"/>
+                <circle cx="12" cy="10" r="2.4" fill="rgba(214,178,94,0.95)"/>
+              </svg>
+            </div>
+            <div>
+              <h4>Shringartali</h4>
+              <p>Flexible batch timings for junior and senior standards.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h3 class="section-title reveal">Contact</h3>
+            <p class="section-sub reveal">Premium contact card design. Fast replies on WhatsApp.</p>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card reveal">
+            <h4>Get Admission & Details</h4>
+
+            <div class="contact-row">
+              <div class="icon" aria-hidden="true" style="width:40px;height:40px;border-radius:14px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M22 16.9v3a2 2 0 0 1-2.2 2c-9.9-.9-17.6-8.6-18.5-18.5A2 2 0 0 1 3.3 1h3a2 2 0 0 1 2 1.7l.6 2.6a2 2 0 0 1-.6 1.9L7 8.5a16 16 0 0 0 8.5 8.5l1.3-1.3a2 2 0 0 1 1.9-.6l2.6.6a2 2 0 0 1 1.7 2.2Z"
+                        stroke="rgba(11,27,58,0.8)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <b>Phone</b>
+                <span><a href="tel:+918669771517">+91 8669771517</a></span>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="icon" aria-hidden="true" style="width:40px;height:40px;border-radius:14px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M20.5 11.9c0 4.6-3.8 8.4-8.4 8.4-1.5 0-2.9-.4-4.1-1l-4 1 1.1-3.9c-.8-1.2-1.3-2.7-1.3-4.3 0-4.6 3.8-8.4 8.4-8.4s8.3 3.7 8.3 8.2Z"
+                        stroke="rgba(11,27,58,0.8)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M9.6 8.7c.2-.5.4-.5.6-.5h.6c.2 0 .4 0 .5.3l.8 1.9c.1.2.1.5 0 .7l-.3.4c-.1.2-.1.4.1.6.4.7 1 1.3 1.7 1.7.2.1.4.1.6-.1l.4-.3c.2-.1.5-.1.7 0l1.9.8c.3.1.3.3.3.5v.6c0 .2 0 .4-.5.6-.5.3-1.5.6-2.6.3-1.1-.3-2.5-1.2-3.6-2.3-1.1-1.1-2-2.5-2.3-3.6-.3-1.1 0-2.1.3-2.6Z"
+                        fill="rgba(214,178,94,0.95)"/>
+                </svg>
+              </div>
+              <div>
+                <b>WhatsApp</b>
+                <span>
+                  <a target="_blank" rel="noopener"
+                     href="https://wa.me/918669771517?text=Hello%20Rise%20With%20Uzma%2C%20I%20want%20to%20know%20the%20fees%20structure.">
+                    +91 8669771517
+                  </a>
+                </span>
+              </div>
+            </div>
+
+            <div class="fees-note">
+              <b>Note:</b> Contact on WhatsApp to get fees structure.
+            </div>
+
+            <div class="contact-actions">
+              <a class="btn btn-gold" target="_blank" rel="noopener"
+                 href="https://wa.me/918669771517?text=Hello%20Rise%20With%20Uzma%2C%20please%20share%20the%20fees%20structure%20and%20batch%20details.">
+                Message on WhatsApp
+              </a>
+              <a class="btn btn-outline" href="tel:+918669771517">Call Now</a>
+            </div>
+          </div>
+
+          <div class="contact-card reveal">
+            <h4>Quick Summary</h4>
+
+            <div class="contact-row">
+              <div class="icon" aria-hidden="true" style="width:40px;height:40px;border-radius:14px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 5h16v14H4z" stroke="rgba(11,27,58,0.8)" stroke-width="1.6"/>
+                  <path d="M7 9h10M7 12h10M7 15h7" stroke="rgba(11,27,58,0.55)" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <b>Classes</b>
+                <span>3rd to 12th (Offline)</span>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="icon" aria-hidden="true" style="width:40px;height:40px;border-radius:14px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M6 4h12v16H6z" stroke="rgba(11,27,58,0.8)" stroke-width="1.6"/>
+                  <path d="M9 8h6M9 12h6M9 16h4" stroke="rgba(214,178,94,0.95)" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <b>Subjects</b>
+                <span>Maths, Science, English (Other subjects if required)</span>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <div class="icon" aria-hidden="true" style="width:40px;height:40px;border-radius:14px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3l8 4v6c0 5-3.5 8-8 8s-8-3-8-8V7l8-4Z"
+                        stroke="rgba(11,27,58,0.8)" stroke-width="1.6" stroke-linejoin="round"/>
+                  <path d="M9 12l2 2 4-5" stroke="rgba(214,178,94,0.95)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <b>Support</b>
+                <span>Personal Attention • Doubt Solving • Weekly Tests • Notes</span>
+              </div>
+            </div>
+
+            <div class="fees-note">
+              Want admission? Tap WhatsApp button (bottom-right) and send “Enroll”.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="footer-line"></div>
+        © 2026 Rise With Uzma | All Rights Reserved
+      </div>
+    </footer>
+  </main>
+
+  <!-- Floating WhatsApp Button -->
+  <a class="whatsapp-float" aria-label="Chat on WhatsApp"
+     target="_blank" rel="noopener"
+     href="https://wa.me/918669771517?text=Hello%20Rise%20With%20Uzma%2C%20I%20want%20to%20enroll%20and%20know%20the%20fees%20structure.">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M20.5 11.9c0 4.6-3.8 8.4-8.4 8.4-1.5 0-2.9-.4-4.1-1l-4 1 1.1-3.9c-.8-1.2-1.3-2.7-1.3-4.3 0-4.6 3.8-8.4 8.4-8.4s8.3 3.7 8.3 8.2Z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M9.6 8.7c.2-.5.4-.5.6-.5h.6c.2 0 .4 0 .5.3l.8 1.9c.1.2.1.5 0 .7l-.3.4c-.1.2-.1.4.1.6.4.7 1 1.3 1.7 1.7.2.1.4.1.6-.1l.4-.3c.2-.1.5-.1.7 0l1.9.8c.3.1.3.3.3.5v.6c0 .2 0 .4-.5.6-.5.3-1.5.6-2.6.3-1.1-.3-2.5-1.2-3.6-2.3-1.1-1.1-2-2.5-2.3-3.6-.3-1.1 0-2.1.3-2.6Z" fill="white"/>
+    </svg>
+  </a>
+
+  <script>
+    // Drawer (mobile)
+    const drawer = document.getElementById('drawer');
+    const menuBtn = document.getElementById('menuBtn');
+    const closeDrawer = document.getElementById('closeDrawer');
+    const drawerLinks = document.querySelectorAll('.drawer-link');
+
+    function openDrawer(){
+      drawer.style.display = 'block';
+      requestAnimationFrame(()=> drawer.classList.add('open'));
+      drawer.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+    function hideDrawer(){
+      drawer.classList.remove('open');
+      drawer.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+      setTimeout(()=>{ drawer.style.display = 'none'; }, 240);
+    }
+    menuBtn?.addEventListener('click', openDrawer);
+    closeDrawer?.addEventListener('click', hideDrawer);
+    drawer?.addEventListener('click', (e)=>{ if(e.target === drawer) hideDrawer(); });
+    drawerLinks.forEach(a => a.addEventListener('click', hideDrawer));
+
+    // Smooth reveal on scroll (IntersectionObserver)
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
