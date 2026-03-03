@@ -3,44 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rise With Uzma | Premium Offline Tuition Academy (Classes 3rd to 12th)</title>
-  <link rel="icon" href="favicon.ico">
-  <meta property="og:locale" content="en_IN" />
+
   <!-- SEO -->
-  <meta name="description" content="Rise With Uzma is a premium offline tuition academy for Classes 3rd to 12th. Personal attention, doubt-solving, weekly tests, structured notes, and a focused learning environment across two centers in Maharashtra." />
-  <meta name="keywords" content="Rise With Uzma, offline tuition, coaching classes, Classes 3rd to 12th, Maharashtra, Maths tuition, Science tuition, English tuition, Starcity, Shringartali" />
+  <title>Rise With Uzma (Uzma Ghare) | Premium Offline Tuition Academy (Classes 3rd to 12th)</title>
+
+  <!-- Favicon / Logo -->
+  <!-- Put these files in your hosting root or /images folder as mentioned below -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/logo-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/logo-180.png">
+
+  <meta name="description" content="Rise With Uzma by Uzma Ghare is a premium offline tuition academy for Classes 3rd to 12th. Personal attention, doubt-solving, weekly tests, structured notes, and a focused learning environment across two centers in Maharashtra." />
+  <meta name="keywords" content="Rise With Uzma, Uzma Ghare, offline tuition, coaching classes, Classes 3rd to 12th, Maharashtra, Maths tuition, Science tuition, English tuition, Starcity, Shringartali" />
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
   <link rel="canonical" href="https://risewithuzma.online/" />
+  <meta name="theme-color" content="#0B1B3A" />
+  <meta property="og:locale" content="en_IN" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Rise With Uzma" />
-  <meta property="og:title" content="Rise With Uzma | Premium Offline Tuition Academy (Classes 3rd to 12th)" />
-  <meta property="og:description" content="Premium offline coaching with personal attention, doubt-solving, weekly tests, and structured notes. Two centers in Maharashtra: Starcity and Shringartali." />
+  <meta property="og:title" content="Rise With Uzma (Uzma Ghare) | Premium Offline Tuition Academy (Classes 3rd to 12th)" />
+  <meta property="og:description" content="Rise With Uzma by Uzma Ghare — premium offline coaching with personal attention, doubt-solving, weekly tests, and structured notes. Two centers in Maharashtra: Starcity and Shringartali." />
   <meta property="og:url" content="https://risewithuzma.online/" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80" />
+  <!-- Best: use your own hosted image e.g. https://risewithuzma.online/images/og.jpg -->
+  <meta property="og:image" content="https://risewithuzma.online/images/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Rise With Uzma | Premium Offline Tuition Academy" />
-  <meta name="twitter:description" content="Offline tuition for Classes 3rd to 12th with personal guidance, regular practice, and a focused learning environment in Maharashtra." />
-  <meta name="twitter:image" content="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80" />
-  <meta property="og:locale" content="en_IN" />
-  <meta name="theme-color" content="#0B1B3A" />
+  <meta name="twitter:title" content="Rise With Uzma (Uzma Ghare) | Premium Offline Tuition Academy" />
+  <meta name="twitter:description" content="Rise With Uzma by Uzma Ghare — offline tuition for Classes 3rd to 12th with personal guidance, regular practice, and a focused learning environment in Maharashtra." />
+  <meta name="twitter:image" content="https://risewithuzma.online/images/og.jpg" />
+
   <!-- Structured Data (LocalBusiness) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "#rise-with-uzma",
+    "@id": "https://risewithuzma.online/#rise-with-uzma",
     "name": "Rise With Uzma",
+    "alternateName": "Rise With Uzma by Uzma Ghare",
+    "founder": {
+      "@type": "Person",
+      "name": "Uzma Ghare"
+    },
     "telephone": "+918669771571",
-    "url": "https://risewithuzma.online/",",
+    "url": "https://risewithuzma.online/",
     "areaServed": {
       "@type": "AdministrativeArea",
       "name": "Maharashtra"
     },
     "serviceArea": "Maharashtra",
+    "image": "https://risewithuzma.online/images/og.jpg",
+    "logo": "https://risewithuzma.online/images/logo-192.png",
     "location": [
       {
         "@type": "Place",
@@ -97,7 +115,6 @@
     a{ color:inherit; text-decoration:none; }
     img{ max-width:100%; display:block; }
 
-    /* Layout */
     .container{
       width:min(var(--container), calc(100% - 40px));
       margin:0 auto;
@@ -119,10 +136,26 @@
       padding:14px 0;
       gap:16px;
     }
+
     .brand{
       display:flex;
-      flex-direction:column;
+      align-items:center;
+      gap:10px;
       line-height:1.1;
+      min-width: 220px;
+    }
+    .brand-logo{
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      object-fit:cover;
+      box-shadow: 0 10px 22px rgba(11,27,58,0.12);
+      border: 1px solid rgba(11,27,58,0.08);
+      background: rgba(255,255,255,0.9);
+    }
+    .brand-text{
+      display:flex;
+      flex-direction:column;
     }
     .brand .name{
       font-family: "Plus Jakarta Sans", sans-serif;
@@ -246,6 +279,7 @@
     .drawer .drawer-head{
       display:flex; align-items:center; justify-content:space-between;
       padding:6px 0 12px;
+      gap:12px;
     }
     .drawer .drawer-links{
       display:flex; flex-direction:column;
@@ -329,6 +363,13 @@
       letter-spacing: 0.2px;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     }
+    .hero .founder{
+      margin: 10px 0 0;
+      color: rgba(255,255,255,0.92);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.2px;
+    }
     .hero p{
       margin: 16px 0 26px;
       max-width: 56ch;
@@ -375,7 +416,6 @@
       opacity:0.9;
     }
 
-    /* Section base */
     section{
       padding: 64px 0;
       position:relative;
@@ -452,7 +492,6 @@
       min-height: 320px;
       background:
         linear-gradient(120deg, rgba(11,27,58,0.18), rgba(214,178,94,0.08)),
-        /* ONLINE IMAGE. For OFFLINE: url('images/about.jpg') */
         url("https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1600&q=80");
       background-size: cover;
       background-position: center;
@@ -801,6 +840,7 @@
       .two-col{ grid-template-columns: 1fr; }
       .gallery{ grid-template-columns: 1fr; }
       section{ padding: 56px 0; }
+      .brand{ min-width: unset; }
     }
   </style>
 </head>
@@ -810,8 +850,12 @@
   <header class="nav">
     <div class="container nav-inner">
       <div class="brand">
-        <div class="name">Rise With Uzma</div>
-        <div class="tag">Premium Offline Tuition Academy</div>
+        <!-- Put your logo here: images/logo.png -->
+        <img class="brand-logo" src="images/logo.png" alt="Rise With Uzma Logo" />
+        <div class="brand-text">
+          <div class="name">Rise With Uzma</div>
+          <div class="tag">Premium Offline Tuition Academy • By Uzma Ghare</div>
+        </div>
       </div>
 
       <nav class="nav-links" aria-label="Primary">
@@ -849,8 +893,11 @@
     <div class="drawer-panel" role="dialog" aria-label="Mobile Menu">
       <div class="drawer-head">
         <div class="brand">
-          <div class="name">Rise With Uzma</div>
-          <div class="tag">Premium Offline Coaching Academy</div>
+          <img class="brand-logo" src="images/logo.png" alt="Rise With Uzma Logo" />
+          <div class="brand-text">
+            <div class="name">Rise With Uzma</div>
+            <div class="tag">By Uzma Ghare</div>
+          </div>
         </div>
         <button class="btn btn-outline" id="closeDrawer" aria-label="Close menu">Close</button>
       </div>
@@ -888,6 +935,8 @@
 
               <h1>Rise With Uzma</h1>
               <h2>Offline coaching with personal guidance</h2>
+              <div class="founder">Founder & Educator: Uzma Ghare</div>
+
               <p>
                 Offline tuition for Classes <b>3rd to 12th</b> in a focused learning setup — clear concepts,
                 steady practice, regular support, and improved confidence.
@@ -950,8 +999,8 @@
           <div class="about-text reveal">
             <h3>Offline Coaching with Personal Mentorship</h3>
             <p class="section-sub" style="margin-top:10px;">
-              We teach with clarity and consistency. Strong fundamentals, regular practice, doubt support, and steady progress —
-              within a friendly and disciplined classroom environment.
+              Rise With Uzma is led by <b>Uzma Ghare</b>. We teach with clarity and consistency. Strong fundamentals, regular practice,
+              doubt support, and steady progress — within a friendly and disciplined classroom environment.
             </p>
 
             <div class="pill-row">
@@ -1301,7 +1350,7 @@
               </div>
               <div>
                 <b>Phone</b>
-                <span><a href="tel:+918669771571">+91 8669771517</a></span>
+                <span><a href="tel:+918669771571">+91 8669771571</a></span>
               </div>
             </div>
 
@@ -1319,7 +1368,7 @@
                 <span>
                   <a target="_blank" rel="noopener"
                      href="https://wa.me/918669771571?text=Hello%20Rise%20With%20Uzma%2C%20I%20want%20to%20know%20the%20fees%20structure.">
-                    +91 8669771517
+                    +91 8669771571
                   </a>
                 </span>
               </div>
@@ -1383,6 +1432,7 @@
 
             <div class="fees-note">
               Want admission? Tap the WhatsApp button (bottom-right) and send “Enroll”.
+              <div style="margin-top:8px;"><b>Founder:</b> Uzma Ghare</div>
             </div>
           </div>
         </div>
@@ -1393,16 +1443,15 @@
     <footer>
       <div class="container">
         <div class="footer-line"></div>
-        © 2026 Rise With Uzma | All Rights Reserved
+        © 2026 Rise With Uzma • By Uzma Ghare | All Rights Reserved
       </div>
     </footer>
   </main>
 
-  <!-- Floating WhatsApp Button -->
+  <!-- Floating WhatsApp Button (FIXED URL - no new line) -->
   <a class="whatsapp-float" aria-label="Chat on WhatsApp"
      target="_blank" rel="noopener"
-     href="https://wa.me/918669771571
-?text=Hello%20Rise%20With%20Uzma%2C%20I%20want%20to%20enroll%20and%20know%20the%20fees%20structure.">
+     href="https://wa.me/918669771571?text=Hello%20Rise%20With%20Uzma%2C%20I%20want%20to%20enroll%20and%20know%20the%20fees%20structure.">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M20.5 11.9c0 4.6-3.8 8.4-8.4 8.4-1.5 0-2.9-.4-4.1-1l-4 1 1.1-3.9c-.8-1.2-1.3-2.7-1.3-4.3 0-4.6 3.8-8.4 8.4-8.4s8.3 3.7 8.3 8.2Z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M9.6 8.7c.2-.5.4-.5.6-.5h.6c.2 0 .4 0 .5.3l.8 1.9c.1.2.1.5 0 .7l-.3.4c-.1.2-.1.4.1.6.4.7 1 1.3 1.7 1.7.2.1.4.1.6-.1l.4-.3c.2-.1.5-.1.7 0l1.9.8c.3.1.3.3.3.5v.6c0 .2 0 .4-.5.6-.5.3-1.5.6-2.6.3-1.1-.3-2.5-1.2-3.6-2.3-1.1-1.1-2-2.5-2.3-3.6-.3-1.1 0-2.1.3-2.6Z" fill="white"/>
@@ -1447,4 +1496,3 @@
   </script>
 </body>
 </html>
-
